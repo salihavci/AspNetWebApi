@@ -12,7 +12,7 @@ namespace AspNetWebApi.Data.Repositories
     public class ProductRepository : Repository<Product>, IProductRepository
     {
         private AppDbContext appDbContext { get => _context as AppDbContext; } //Product tablosuna erişmek için dependency injection yaptık
-        public ProductRepository(DbContext context) : base(context)
+        public ProductRepository(AppDbContext context) : base(context)
         {
         }
 

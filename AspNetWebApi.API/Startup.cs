@@ -1,6 +1,10 @@
+using AspNetWebApi.Core.Repositories;
+using AspNetWebApi.Core.Services;
 using AspNetWebApi.Core.UnitOfWorks;
 using AspNetWebApi.Data;
+using AspNetWebApi.Data.Repositories;
 using AspNetWebApi.Data.UnitOfWorks;
+using AspNetWebApi.Service.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -15,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace AspNetWebApi.API
 {
@@ -36,6 +41,15 @@ namespace AspNetWebApi.API
                 });
             });
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            //---------------------------------Dependency Injection----------------------------------
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IService<>), typeof(Service<>));
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddAutoMapper(typeof(Startup));
+
+            //---------------------------------Dependency Injection----------------------------------
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

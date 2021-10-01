@@ -12,7 +12,7 @@ namespace AspNetWebApi.Data.Repositories
     public class CategoryRepository : Repository<Category>, ICategoryRepository
     {
         private AppDbContext appDbContext { get => _context as AppDbContext; } //Product tablosuna erişmek için dependency injection yaptık
-        public CategoryRepository(DbContext context) : base(context)
+        public CategoryRepository(AppDbContext context) : base(context)
         {
         }
 
