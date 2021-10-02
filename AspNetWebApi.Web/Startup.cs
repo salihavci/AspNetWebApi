@@ -18,6 +18,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using AspNetWebApi.Web.Filters;
+using AspNetWebApi.Web.ApiServices;
 
 namespace AspNetWebApi.Web
 {
@@ -48,6 +49,9 @@ namespace AspNetWebApi.Web
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<NotFoundFilter>();
+            services.AddHttpClient<ApiService>(opts => {
+                opts.BaseAddress = new Uri(Configuration["BaseUrl"].ToString());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

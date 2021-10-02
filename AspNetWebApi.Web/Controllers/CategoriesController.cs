@@ -1,5 +1,6 @@
 ﻿using AspNetWebApi.Core.Models;
 using AspNetWebApi.Core.Services;
+using AspNetWebApi.Web.ApiServices;
 using AspNetWebApi.Web.DTOs;
 using AspNetWebApi.Web.Filters;
 using AutoMapper;
@@ -15,16 +16,18 @@ namespace AspNetWebApi.Web.Controllers
     {
         private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
+        private readonly ApiService _apiService;
 
-        public CategoriesController(ICategoryService categoryService, IMapper mapper)
+        public CategoriesController(ICategoryService categoryService, IMapper mapper,ApiService apiService)
         {
             _categoryService = categoryService;
             _mapper = mapper;
+            _apiService = apiService;
         }
 
         public IActionResult Index()
         {
-            var categories = _categoryService.GetAllAsync().Result; //Asenkron method ama async yazmamak için result yazıldı.
+            var categories = _apiService.GetAllAsync().Result; //Asenkron method ama async yazmamak için result yazıldı.
             return View(_mapper.Map<IEnumerable<CategoryDto>>(categories));
         }
 
@@ -37,29 +40,28 @@ namespace AspNetWebApi.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CategoryDto dto)
         {
-            await _categoryService.AddAsync(_mapper.Map<Category>(dto));
+            await _apiService.AddAsync(dto);
             return RedirectToAction("Index", "Categories");
         }
 
         [HttpGet]
-        public IActionResult Update(int id)
+        public async Task<IActionResult> Update(int id)
         {
-            var category = _categoryService.GetByIdAsync(id).Result;
+            var category = await _apiService.GetByIdAsync(id);
             return View(_mapper.Map<CategoryDto>(category));
         }
 
         [HttpPost]
-        public IActionResult Update(CategoryDto dto)
+        public async Task<IActionResult> Update(CategoryDto dto)
         {
-            _categoryService.Update(_mapper.Map<Category>(dto));
+            await _apiService.Update(dto);
             return RedirectToAction("Index", "Categories");
         }
 
         [ServiceFilter(typeof(NotFoundFilter))]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var category = _categoryService.GetByIdAsync(id).Result;
-            _categoryService.Remove(category);
+            await _apiService.Remove(id);
             return RedirectToAction("Index", "Categories");
         }
     }
