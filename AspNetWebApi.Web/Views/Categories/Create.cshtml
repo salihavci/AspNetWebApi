@@ -1,0 +1,22 @@
+﻿@model CategoryDto
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Kategori Ekleme</h1>
+<hr />
+<div class="row">
+    <div class="col-12">
+        <form asp-action="Create" asp-controller="Categories" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="col-form-label">İsim : </label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+               <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

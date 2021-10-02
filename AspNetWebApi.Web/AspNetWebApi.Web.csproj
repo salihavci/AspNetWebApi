@@ -6,13 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.10" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspNetWebApi.API\AspNetWebApi.API.csproj" />
-    <ProjectReference Include="..\AspNetWebApi.Core\AspNetWebApi.Core.csproj" />
-    <ProjectReference Include="..\AspNetWebApi.Data\AspNetWebApi.Data.csproj" />
     <ProjectReference Include="..\AspNetWebApi.Service\AspNetWebApi.Service.csproj" />
   </ItemGroup>
 

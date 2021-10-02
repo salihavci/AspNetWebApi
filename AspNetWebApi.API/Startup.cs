@@ -47,13 +47,14 @@ namespace AspNetWebApi.API
                     o.MigrationsAssembly("AspNetWebApi.Data");
                 });
             });
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            
 
             //---------------------------------Dependency Injection----------------------------------
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IService<>), typeof(Service<>));
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<NotFoundFilter>();
             services.AddAutoMapper(typeof(Startup));
 

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CategoryDto>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Kategoriler</h1>
+<hr />
+<div class="col-12">
+    <a class="btn btn-primary col-3" style="float:right;" asp-action="Create" asp-controller="Categories"> Yeni Kategori Ekle </a>
+</div>
+<div class="col-12 table-responsive py-3">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th style="text-align:right;">Transaction</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td style="text-align:right;"><a asp-action="Update" asp-route-id="@item.Id" asp-controller="Categories" class="btn btn-info">Düzenle</a> | <a asp-controller="Categories" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Sil</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
