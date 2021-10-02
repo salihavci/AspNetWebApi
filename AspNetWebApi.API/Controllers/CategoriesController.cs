@@ -13,12 +13,12 @@ namespace AspNetWebApi.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
 
-        public CategoryController(ICategoryService categoryService, IMapper mapper)
+        public CategoriesController(ICategoryService categoryService, IMapper mapper)
         {
             _categoryService = categoryService;
             _mapper = mapper;
@@ -58,6 +58,13 @@ namespace AspNetWebApi.API.Controllers
             var category = await _categoryService.GetByIdAsync(id);
             _categoryService.Remove(category);
             return NoContent();
+        }
+
+        [HttpGet("{id}/products")]
+        public async Task<IActionResult> GetWithProductById(int id)
+        {
+            var cat = await _categoryService.GetWithProductByIdAsync(id);
+            return Ok(_mapper.Map<CategoryWithProductDto>(cat));
         }
     }
 }
