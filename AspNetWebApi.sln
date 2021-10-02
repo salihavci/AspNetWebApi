@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetWebApi.API", "AspNetWebApi.API\AspNetWebApi.API.csproj", "{8F73AA4C-5034-4B3C-8C33-68DD537B5B90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetWebApi.API", "AspNetWebApi.API\AspNetWebApi.API.csproj", "{8F73AA4C-5034-4B3C-8C33-68DD537B5B90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetWebApi.Core", "AspNetWebApi.Core\AspNetWebApi.Core.csproj", "{2FEDC73C-7CD7-4656-ACD3-99940B73B5A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetWebApi.Core", "AspNetWebApi.Core\AspNetWebApi.Core.csproj", "{2FEDC73C-7CD7-4656-ACD3-99940B73B5A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetWebApi.Data", "AspNetWebApi.Data\AspNetWebApi.Data.csproj", "{5AAA1B40-59CB-48BD-8B9B-CD141622B7F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetWebApi.Data", "AspNetWebApi.Data\AspNetWebApi.Data.csproj", "{5AAA1B40-59CB-48BD-8B9B-CD141622B7F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetWebApi.Service", "AspNetWebApi.Service\AspNetWebApi.Service.csproj", "{C050493E-82DB-479F-9A32-6FB761318EB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetWebApi.Service", "AspNetWebApi.Service\AspNetWebApi.Service.csproj", "{C050493E-82DB-479F-9A32-6FB761318EB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetWebApi.Web", "AspNetWebApi.Web\AspNetWebApi.Web.csproj", "{7B8B40AC-15D1-4F0B-AA84-A18841B9E4A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C050493E-82DB-479F-9A32-6FB761318EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C050493E-82DB-479F-9A32-6FB761318EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C050493E-82DB-479F-9A32-6FB761318EB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B8B40AC-15D1-4F0B-AA84-A18841B9E4A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8B40AC-15D1-4F0B-AA84-A18841B9E4A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8B40AC-15D1-4F0B-AA84-A18841B9E4A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8B40AC-15D1-4F0B-AA84-A18841B9E4A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
