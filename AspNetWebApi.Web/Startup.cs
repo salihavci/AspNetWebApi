@@ -1,14 +1,7 @@
-using AspNetWebApi.Core.Repositories;
-using AspNetWebApi.Core.Services;
-using AspNetWebApi.Core.UnitOfWorks;
-using AspNetWebApi.Data;
-using AspNetWebApi.Data.Repositories;
-using AspNetWebApi.Data.UnitOfWorks;
-using AspNetWebApi.Service.Services;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -35,18 +28,18 @@ namespace AspNetWebApi.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            services.AddDbContext<AppDbContext>(opt =>
-            {
-                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), o =>
-                {
-                    o.MigrationsAssembly("AspNetWebApi.Data");
-                });
-            });
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped(typeof(IService<>), typeof(Service<>));
-            services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            //services.AddDbContext<AppDbContext>(opt =>
+            //{
+            //    opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), o =>
+            //    {
+            //        o.MigrationsAssembly("AspNetWebApi.Data");
+            //    });
+            //});
+            //services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            //services.AddScoped(typeof(IService<>), typeof(Service<>));
+            //services.AddScoped<IProductService, ProductService>();
+            //services.AddScoped<ICategoryService, CategoryService>();
+            //services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<NotFoundFilter>();
             services.AddHttpClient<ApiService>(opts => {

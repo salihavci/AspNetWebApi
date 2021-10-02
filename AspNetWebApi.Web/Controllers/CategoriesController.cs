@@ -1,6 +1,4 @@
-﻿using AspNetWebApi.Core.Models;
-using AspNetWebApi.Core.Services;
-using AspNetWebApi.Web.ApiServices;
+﻿using AspNetWebApi.Web.ApiServices;
 using AspNetWebApi.Web.DTOs;
 using AspNetWebApi.Web.Filters;
 using AutoMapper;
@@ -14,13 +12,11 @@ namespace AspNetWebApi.Web.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
         private readonly ApiService _apiService;
 
-        public CategoriesController(ICategoryService categoryService, IMapper mapper,ApiService apiService)
+        public CategoriesController(IMapper mapper,ApiService apiService)
         {
-            _categoryService = categoryService;
             _mapper = mapper;
             _apiService = apiService;
         }

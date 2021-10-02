@@ -1,5 +1,4 @@
 ﻿using AspNetWebApi.Web.DTOs;
-using AspNetWebApi.Core.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -8,14 +7,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetWebApi.Web.ApiServices;
 
 namespace AspNetWebApi.Web.Filters
 {
     public class NotFoundFilter : ActionFilterAttribute
     {
-        private readonly ICategoryService _categoryService;
+        private readonly ApiService _categoryService;
 
-        public NotFoundFilter(ICategoryService categoryService)
+        public NotFoundFilter(ApiService categoryService)
         {
             _categoryService = categoryService;
         }
