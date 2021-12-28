@@ -21,5 +21,6 @@ namespace AspNetWebApi.Data.Repositories
             var product = await appDbContext.Products.Include(x => x.Category).SingleOrDefaultAsync(x=> x.Id == id);
             return product;
         }
+
     }
 }

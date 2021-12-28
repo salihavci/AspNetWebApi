@@ -38,6 +38,7 @@ namespace AspNetWebApi.API
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        //Burasý injection ve baðlantýlar için kullanýlýr. (Database baðlantýsý, External Login baðlantýsý (Facebook - Google - Microsoft login) v.b.)
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(opt =>
@@ -52,10 +53,10 @@ namespace AspNetWebApi.API
             //---------------------------------Dependency Injection----------------------------------
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IService<>), typeof(Service<>));
-            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductService, ProductService>(); //Ben eðer IProductService'i inject ettiysem ProductService'deki iþlemleri yapabilirim.
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<NotFoundFilter>();
+            services.AddScoped<NotFoundFilter>(); 
             services.AddAutoMapper(typeof(Startup));
 
             //---------------------------------Dependency Injection----------------------------------
@@ -76,6 +77,7 @@ namespace AspNetWebApi.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        //Burasý middleware için kullanýlýr.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
